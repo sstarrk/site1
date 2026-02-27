@@ -1,6 +1,8 @@
 services:
   site1:
     build: .
-    image: ghcr.io/sstarrk/site1:v1.2
+    image: site1-frontend:v1.4
     ports:
       - "2222:80"
+      - "422:422"
+      - "443:443"
