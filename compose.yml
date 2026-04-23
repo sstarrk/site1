@@ -1,8 +1,6 @@
 services:
-  site1:
-    build: .
-    image: site1-frontend:v1.5
+  site:
+    image: sited:v1.6
     ports:
-      - "2222:80"
+      - "480:80"
       - "422:422"
-      - "443:443"

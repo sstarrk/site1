@@ -1,0 +1,32 @@
+from flask import Flask, request, jsonify, redirect, session, send_file
+from ldap3 import Server, Connection
+import subprocess
+import os
+
+app = Flask(__name__)
+app.secret_key = 'supersecretkey123'
+
+app.secret_key = 'supersecretkey123
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    data = request.json
+    weather = data.get('weather', 'нет данных')
+    
+    weather_escaped = weather.replace('/', '\\/').replace('+', '\\+')
+    commands = f"sed -i 's/id=\"weather-temp\">[^<]*/id=\"weather-temp\">{weather_escaped}/' /usr/share/nginx/html/index.html"
+    
+    result = subprocess.run(
+        ['ssh', '-p', '422', '-o', 'StrictHostKeyChecking=no', 'alnur@localhost', commands],
+        capture_output=True, text=True
+    )
+
+    print(f"Обновился")
+ 
+    if result.returncode == 0:
+        return jsonify({'status': 'ok', 'message': f'Погода обновлена: {weather}'}), 200
+    else:
+        return jsonify({'status': 'error', 'message': result.stderr}), 500
+   
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5001)
