@@ -20,11 +20,12 @@
       padding: 32px 20px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 24px;
       background: #fff;
       position: fixed;
       top: 0; left: 0; bottom: 0;
       width: 200px;
+      overflow-y: auto;
     }
 
     .brand-title { font-size: 15px; font-weight: 600; }
@@ -43,6 +44,7 @@
       padding: 8px; border-radius: 7px;
       font-size: 13px; font-weight: 500; color: #555;
       text-decoration: none; transition: background 0.15s, color 0.15s;
+      cursor: pointer;
     }
 
     .nav-link:hover { background: #f3f3f3; color: #111; }
@@ -67,6 +69,12 @@
     }
     .weather-temp { font-size: 14px; font-weight: 600; color: #111; }
     .weather-city { font-size: 11px; color: #bbb; }
+
+    .section-label {
+      font-size: 11px; font-weight: 500; color: #bbb;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 12px; margin-top: 32px;
+    }
 
     .grid {
       display: grid;
@@ -126,13 +134,19 @@
     </div>
 
     <div class="nav-section">
+      <div class="nav-label">Разделы</div>
+      <a class="nav-link" onclick="scrollTo('docker')"><span class="dot"></span> Docker</a>
+      <a class="nav-link" onclick="scrollTo('linux')"><span class="dot"></span> Linux / Bash</a>
+      <a class="nav-link" onclick="scrollTo('webservers')"><span class="dot"></span> Веб-серверы</a>
+      <a class="nav-link" onclick="scrollTo('python')"><span class="dot"></span> Python</a>
+      <a class="nav-link" onclick="scrollTo('ad')"><span class="dot"></span> Active Directory</a>
+      <a class="nav-link" onclick="scrollTo('git')"><span class="dot"></span> Git</a>
+      <a class="nav-link" onclick="scrollTo('projects')"><span class="dot"></span> Мои проекты</a>
+    </div>
+
+    <div class="nav-section">
       <div class="nav-label">Статьи</div>
-
-      <!-- Добавляй ссылки сюда -->
-      <a class="nav-link active" href="presentation.html">
-        <span class="dot"></span> Презентация
-      </a>
-
+      <a class="nav-link" href="presentation.html"><span class="dot"></span> Презентация</a>
     </div>
   </nav>
 
@@ -147,58 +161,170 @@
         </div>
       </div>
     </div>
+
+    <div id="docker" class="section-label">Docker</div>
+    <div class="grid">
+      <a class="card" href="https://docs.docker.com/reference/dockerfile/" target="_blank">
+        <div class="card-header"><div class="card-icon">🐳</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Dockerfile</div>
+        <div class="card-desc">Сборка образов — FROM, RUN, COPY, CMD, EXPOSE, WORKDIR</div>
+        <div class="card-footer"><span class="card-date">Фев 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://docs.docker.com/compose/" target="_blank">
+        <div class="card-header"><div class="card-icon">🐳</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Docker Compose</div>
+        <div class="card-desc">Запуск контейнеров — ports, volumes, image, build</div>
+        <div class="card-footer"><span class="card-date">Фев 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/" target="_blank">
+        <div class="card-header"><div class="card-icon">📦</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Образы и контейнеры</div>
+        <div class="card-desc">Разница между image и container, docker build, docker run</div>
+        <div class="card-footer"><span class="card-date">Фев 2026</span><span class="card-arrow">→</span></div>
+      </a>
     </div>
 
+    <div id="linux" class="section-label">Linux / Bash</div>
     <div class="grid">
-
-      <!--
-      =============================================
-      ШАБЛОН КАРТОЧКИ — скопируй и измени:
-
-      Ссылка на сайт/GitHub:
-      <a class="card" href="https://github.com/..." target="_blank">
-        <div class="card-header">
-          <div class="card-icon">🔧</div>
-          <span class="card-badge badge-link">Ссылка</span>
-        </div>
-        <div class="card-title">Название</div>
-        <div class="card-desc">Описание</div>
-        <div class="card-footer">
-          <span class="card-date">Фев 2024</span>
-          <span class="card-arrow">→</span>
-        </div>
+      <a class="card" href="https://www.man7.org/linux/man-pages/man1/bash.1.html" target="_blank">
+        <div class="card-header"><div class="card-icon">🖥️</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Bash скрипты</div>
+        <div class="card-desc">Написание скриптов, переменные, условия, циклы</div>
+        <div class="card-footer"><span class="card-date">Фев 2026</span><span class="card-arrow">→</span></div>
       </a>
-
-      Своя HTML страница:
-      <a class="card" href="articles/имя-файла.html">
-        <div class="card-header">
-          <div class="card-icon">📄</div>
-          <span class="card-badge badge-page">Страница</span>
-        </div>
-        <div class="card-title">Название</div>
-        <div class="card-desc">Описание</div>
-        <div class="card-footer">
-          <span class="card-date">Фев 2024</span>
-          <span class="card-arrow">→</span>
-        </div>
+      <a class="card" href="https://www.man7.org/linux/man-pages/man5/crontab.5.html" target="_blank">
+        <div class="card-header"><div class="card-icon">⏰</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Crontab</div>
+        <div class="card-desc">Планировщик задач — запуск скриптов по расписанию</div>
+        <div class="card-footer"><span class="card-date">Мар 2026</span><span class="card-arrow">→</span></div>
       </a>
-      =============================================
-      -->
+      <a class="card" href="https://www.man7.org/linux/man-pages/man1/sed.1.html" target="_blank">
+        <div class="card-header"><div class="card-icon">✏️</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">sed</div>
+        <div class="card-desc">Замена текста в файлах через терминал</div>
+        <div class="card-footer"><span class="card-date">Фев 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://www.openssh.com/manual.html" target="_blank">
+        <div class="card-header"><div class="card-icon">🔐</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">SSH</div>
+        <div class="card-desc">Удалённое подключение к серверу, настройка порта, SSH ключи</div>
+        <div class="card-footer"><span class="card-date">Фев 2026</span><span class="card-arrow">→</span></div>
+      </a>
+    </div>
 
+    <div id="webservers" class="section-label">Веб-серверы</div>
+    <div class="grid">
+      <a class="card" href="https://nginx.org/en/docs/" target="_blank">
+        <div class="card-header"><div class="card-icon">🌐</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Nginx</div>
+        <div class="card-desc">Конфигурация, SSL, reverse proxy, редиректы</div>
+        <div class="card-footer"><span class="card-date">Фев 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://httpd.apache.org/docs/" target="_blank">
+        <div class="card-header"><div class="card-icon">🌐</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Apache (httpd)</div>
+        <div class="card-desc">Установка и настройка Apache на AlmaLinux</div>
+        <div class="card-footer"><span class="card-date">Мар 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://letsencrypt.org/docs/" target="_blank">
+        <div class="card-header"><div class="card-icon">🔒</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">SSL сертификаты</div>
+        <div class="card-desc">Self-signed SSL через openssl, HTTPS настройка</div>
+        <div class="card-footer"><span class="card-date">Фев 2026</span><span class="card-arrow">→</span></div>
+      </a>
+    </div>
+
+    <div id="python" class="section-label">Python</div>
+    <div class="grid">
+      <a class="card" href="https://flask.palletsprojects.com/en/stable/" target="_blank">
+        <div class="card-header"><div class="card-icon">🐍</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Flask</div>
+        <div class="card-desc">Веб-сервер, маршруты, сессии, вебхуки</div>
+        <div class="card-footer"><span class="card-date">Мар 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" target="_blank">
+        <div class="card-header"><div class="card-icon">🐍</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">BeautifulSoup</div>
+        <div class="card-desc">Парсинг HTML страниц, поиск элементов по тегам и классам</div>
+        <div class="card-footer"><span class="card-date">Мар 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://selenium-python.readthedocs.io/" target="_blank">
+        <div class="card-header"><div class="card-icon">🐍</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Selenium</div>
+        <div class="card-desc">Парсинг динамических сайтов с JavaScript</div>
+        <div class="card-footer"><span class="card-date">Мар 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://ldap3.readthedocs.io/" target="_blank">
+        <div class="card-header"><div class="card-icon">🐍</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">ldap3</div>
+        <div class="card-desc">Подключение к Active Directory, LDAP аутентификация</div>
+        <div class="card-footer"><span class="card-date">Апр 2026</span><span class="card-arrow">→</span></div>
+      </a>
+    </div>
+
+    <div id="ad" class="section-label">Active Directory</div>
+    <div class="grid">
+      <a class="card" href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview" target="_blank">
+        <div class="card-header"><div class="card-icon">🪟</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Active Directory</div>
+        <div class="card-desc">Пользователи, группы, OU, GPO — управление доменом</div>
+        <div class="card-footer"><span class="card-date">Апр 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/d2435927-0999-4c62-8c6d-13ba31a52e1a" target="_blank">
+        <div class="card-header"><div class="card-icon">🔑</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">LDAP</div>
+        <div class="card-desc">Протокол для работы с AD, аутентификация пользователей</div>
+        <div class="card-footer"><span class="card-date">Апр 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://tailscale.com/kb/1017/install" target="_blank">
+        <div class="card-header"><div class="card-icon">🔒</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Tailscale VPN</div>
+        <div class="card-desc">Приватная сеть для удалённого доступа к серверам</div>
+        <div class="card-footer"><span class="card-date">Апр 2026</span><span class="card-arrow">→</span></div>
+      </a>
+    </div>
+
+    <div id="git" class="section-label">Git</div>
+    <div class="grid">
+      <a class="card" href="https://git-scm.com/doc" target="_blank">
+        <div class="card-header"><div class="card-icon">📝</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">Git</div>
+        <div class="card-desc">git clone, push, commit, pull — основы работы с репозиторием</div>
+        <div class="card-footer"><span class="card-date">Мар 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry" target="_blank">
+        <div class="card-header"><div class="card-icon">📦</div><span class="card-badge badge-link">Документация</span></div>
+        <div class="card-title">GitHub Container Registry</div>
+        <div class="card-desc">Публикация Docker образов на ghcr.io</div>
+        <div class="card-footer"><span class="card-date">Мар 2026</span><span class="card-arrow">→</span></div>
+      </a>
+    </div>
+
+    <div id="projects" class="section-label">Мои проекты</div>
+    <div class="grid">
       <a class="card" href="presentation.html">
-        <div class="card-header">
-          <div class="card-icon">📁</div>
-          <span class="card-badge badge-page">Страница</span>
-        </div>
+        <div class="card-header"><div class="card-icon">📁</div><span class="card-badge badge-page">Страница</span></div>
         <div class="card-title">Презентация</div>
         <div class="card-desc">Презентация о DNS и портах</div>
-        <div class="card-footer">
-          <span class="card-date">Фев 2026</span>
-          <span class="card-arrow">→</span>
-        </div>
+        <div class="card-footer"><span class="card-date">Фев 2026</span><span class="card-arrow">→</span></div>
+      </a>
+      <a class="card" href="https://github.com/sstarrk/site1" target="_blank">
+        <div class="card-header"><div class="card-icon">🔧</div><span class="card-badge badge-link">GitHub</span></div>
+        <div class="card-title">site1 — DevOps проект</div>
+        <div class="card-desc">Docker + Nginx + SSL + SSH + Webhook + Парсер погоды + LDAP</div>
+        <div class="card-footer"><span class="card-date">Фев 2026</span><span class="card-arrow">→</span></div>
       </a>
     </div>
+
   </main>
+
+  <script>
+    function scrollTo(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      event.target.closest('.nav-link').classList.add('active');
+    }
+  </script>
 
 </body>
 </html>

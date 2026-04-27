@@ -1,6 +1,6 @@
 services:
   site:
-    image: sited:v1.6
+    image: practice
     ports:
       - "480:80"
       - "422:422"
