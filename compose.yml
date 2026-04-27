@@ -1,6 +1,6 @@
 services:
   site:
-    image: practice
+    image: practice:v1.1
     ports:
       - "480:80"
       - "422:422"
